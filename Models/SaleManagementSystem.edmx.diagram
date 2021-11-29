@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="2b71e287bdba43e48384cba44b439780" Name="Diagram1">
+        <EntityTypeShape EntityType="SaleManagementModel.Comment" Width="1.5" PointX="5.25" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SaleManagementModel.Customer" Width="1.5" PointX="5.25" PointY="18.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SaleManagementModel.DetailsPhieuNhap" Width="1.5" PointX="5.25" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SaleManagementModel.Manufacturer" Width="1.5" PointX="0.75" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SaleManagementModel.Member" Width="1.5" PointX="3.125" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SaleManagementModel.MemberType" Width="1.5" PointX="0.75" PointY="14.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SaleManagementModel.OrderDetail" Width="1.5" PointX="9" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SaleManagementModel.PhieuNhap" Width="1.5" PointX="3" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SaleManagementModel.Product" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SaleManagementModel.ProductType" Width="1.5" PointX="0.75" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SaleManagementModel.PurchaseOrder" Width="1.5" PointX="7.75" PointY="14.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SaleManagementModel.Supplier" Width="1.5" PointX="0.75" PointY="7.25" IsExpanded="true" />
+        <AssociationConnector Association="SaleManagementModel.FK_Comment_Member" ManuallyRouted="false" />
+        <AssociationConnector Association="SaleManagementModel.FK_Comment_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="SaleManagementModel.FK_Customer_Member" ManuallyRouted="false" />
+        <AssociationConnector Association="SaleManagementModel.FK_PurchaseOrder_Customer" ManuallyRouted="false" />
+        <AssociationConnector Association="SaleManagementModel.FK_DetailsPhieuNhap_PhieuNhap" ManuallyRouted="false" />
+        <AssociationConnector Association="SaleManagementModel.FK_DetailsPhieuNhap_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="SaleManagementModel.FK_Product_Manufacturer" ManuallyRouted="false" />
+        <AssociationConnector Association="SaleManagementModel.FK_Member_MemberType" ManuallyRouted="false" />
+        <AssociationConnector Association="SaleManagementModel.FK_OrderDetails_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="SaleManagementModel.FK_OrderDetails_PurchaseOrder" ManuallyRouted="false" >
+        </AssociationConnector>
+        <AssociationConnector Association="SaleManagementModel.FK_PhieuNhap_Supplier" ManuallyRouted="false" />
+        <AssociationConnector Association="SaleManagementModel.FK_Product_ProductType" ManuallyRouted="false" />
+        <AssociationConnector Association="SaleManagementModel.FK_Product_Supplier" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

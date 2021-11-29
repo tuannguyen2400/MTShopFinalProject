@@ -1,0 +1,13 @@
+﻿@using MyWebsite_SaleManagement_.Models
+@model IEnumerable<Product>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Layout/HomeLayout.cshtml";
+}
+@{
+    IEnumerable<Product> ListMenProduct = (IEnumerable<Product>)ViewBag.ListMenProduct;
+    IEnumerable<Product> ListWomenProduct = ViewBag.ListWomenProduct as IEnumerable<Product>;
+
+ }
+
+

@@ -1,0 +1,17 @@
+﻿ @*Use ViewBag to show Money and Amount of product in ShopingCart*@
+
+<div class="top_nav_right">
+    <div class="cart box_1">
+        <a href="@Url.Action("ReviewShopingCart,ShoppingCart")">
+            <h3>
+                <div class="total">
+                    <i class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></i>
+                    @ViewBag.AmountOfMoney VND (<span>@ViewBag.AmountOfToTal</span> SP)
+                </div>
+            </h3>
+        </a>
+        <p><a href="@Url.Action("ReviewShopingCart","ShoppingCart")" class="simpleCart_empty">Empty Cart</a></p>
+
+    </div>
+</div>
+  

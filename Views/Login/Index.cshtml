@@ -1,0 +1,62 @@
+﻿@using MyWebsite_SaleManagement_.Models
+@model Member
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Layout/LoginLayout.cshtml";
+}
+<html>
+<head>
+    <title>The Login-Animated Website Template | Home :: w3layouts</title>
+    <meta charset="utf-8">
+    <link href="~/Content/css/style1.css" rel="stylesheet" type="text/css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <script src="~/Scripts/jquery-1.10.2.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+    <!--webfonts-->
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:600italic,400,300,600,700" rel="stylesheet" type="text/css">
+    <!--//webfonts-->
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+</head>
+
+
+<body>
+
+    <div class="login-form">
+        <div class="head">
+            <img src="~/Content/images/mem2.jpg" alt="">
+        </div>
+            @if (Session["Account"] != null && Session["Account"] != "")
+            {
+
+                Member thanhvien = (Member)Session["Account"];
+                <li>Hi @thanhvien.Name </li>
+                @Html.ActionLink("Log Out", "LogOut", "Home")
+                <input type="submit" onclick="myFunction()" value="SIGN IN">
+            }
+            else
+            {
+            }
+            @using (Ajax.BeginForm("Login", "Home", new AjaxOptions { InsertionMode = InsertionMode.Replace,UpdateTargetId = "Notification" }))
+            {
+                <li>
+                    <input type="text" class="text" name="USERNAME" value="Username" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Username';}"><a href="#" class=" icon user"></a>
+                </li>
+                <li>
+                    <input type="password" name="Password" value="Password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}"><a href="#" class=" icon lock"></a>
+                </li>
+                <p><a href="#">Forgot Password </a></p>
+                <h3 style="font-weight:bold; color:red; text-align:center;" id="Notification"></h3>
+                <p><a href="https://localhost:44316/Home/Register"><strong style="font-weight: bold; color: blue; text-align: left;" color="Orange">Register</strong></a></p>
+                <div class="p-container">
+                    <label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i></i>Remember Me</label>
+                    <input type="submit" onclick="myFunction()" value="SIGN IN" />
+                    <div class="clear"></div>
+                </div>
+                <hr width="100%" align="center" color="Orange" />
+            }
+    </div>
+</body>
+</html>

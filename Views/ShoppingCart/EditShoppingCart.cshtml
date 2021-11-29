@@ -1,0 +1,43 @@
+﻿@using MyWebsite_SaleManagement_.Models;
+@model ItemShoppingCart
+
+@{
+    ViewBag.Title = "EditShoppingCart";
+    Layout = "~/Views/Products/Product1.cshtml";
+}
+
+@{
+    List<ItemShoppingCart> lstshoppingCart = ViewBag.ShoppingCart as List<ItemShoppingCart>;
+}
+<table class="tale">
+    <tr>
+        <td>ProductCode</td>
+        <td>NameProduct</td>
+        <td>Image</td>
+        <td>NumberOfOrder</td>
+        <td>UnitPrice</td>
+        <td>intoMoney</td>
+
+    </tr>
+    @foreach (var item in lstshoppingCart)
+    {
+        // Product have Product code Edited sent parameters from ReviewShoppingCart PAGE 
+        if (Model.ProductCode == item.ProductCode)
+        {
+
+            using (Html.BeginForm("UpdateShoppingCart", "ShoppingCart"))
+            {
+
+        <tr>
+            <td>@item.ProductCode</td>
+            <td>@item.NameProduct</td>
+            <td>@Html.TextBox("NumberOfOrder", item.NumberOfOrder)</td>
+            <td>@item.UnitPrice.ToString("#,##")  VND</td>
+            <td>@item.intoMoney.ToString("#,##")  VND</td>
+            <td><img src="@Url.Content("~/Content/ImagesProduct/" + item.Image)" width="50" height="50" /></td>
+            <td><input type ="submit" value = "update"/></td>
+        </tr>
+            }
+        }
+    }
+</table>

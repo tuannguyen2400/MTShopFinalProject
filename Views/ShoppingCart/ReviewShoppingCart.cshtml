@@ -1,0 +1,48 @@
+﻿@using MyWebsite_SaleManagement_.Models;
+@using System.Collections.Generic;
+
+@model List<ItemShoppingCart>
+
+@{
+    ViewBag.Title = "ReviewShoppingCart";
+    Layout = "~/Views/Layout/Products.cshtml";
+}
+
+@if (Model == null)
+            {
+                <h1>Empty ShoppingCart</h1>
+            }
+            else
+            {
+                <table class="tale">
+                    <tr>
+                        <td>ProductCode</td>
+                        <td>NameProduct</td>
+                        <td>Image</td>
+                        <td>NumberOfOrder</td>
+                        <td>UnitPrice</td>
+                        <td>intoMoney</td>
+                         
+                    </tr>
+                    @foreach (var item in Model)
+                {
+                <tr>
+                    <td>@item.ProductCode</td>
+                    <td>@item.NameProduct</td>
+                    <td>@item.NumberOfOrder</td>
+                    <td>@item.UnitPrice.ToString("#,##")  VND</td>
+                    <td>@item.intoMoney.ToString("#,##")  VND</td>
+                    <td><img src="@Url.Content("~/Content/ImagesProduct/" +item.Image)" width="50" height="50" /></td>
+                    <td>@Html.ActionLink("Edit","EditShoppingCart", new{@ProductCode = item.ProductCode })</td>
+
+
+
+
+
+
+
+
+                </tr>
+                }
+                </table>
+            }

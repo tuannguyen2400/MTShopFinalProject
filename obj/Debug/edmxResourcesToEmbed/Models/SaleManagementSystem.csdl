@@ -1,0 +1,395 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SaleManagementModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Comment">
+    <Key>
+      <PropertyRef Name="CommentCode" />
+    </Key>
+    <Property Name="CommentCode" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ContentComment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="MemberCode" Type="Int32" />
+    <Property Name="ProductCode" Type="Int32" />
+    <NavigationProperty Name="Member" Relationship="Self.FK_Comment_Member" FromRole="Comment" ToRole="Member" />
+    <NavigationProperty Name="Product" Relationship="Self.FK_Comment_Product" FromRole="Comment" ToRole="Product" />
+  </EntityType>
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="CustomerCode" />
+    </Key>
+    <Property Name="CustomerCode" Type="Int32" Nullable="false" />
+    <Property Name="NameCustomer" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="MemberCode" Type="Int32" />
+    <NavigationProperty Name="Member" Relationship="Self.FK_Customer_Member" FromRole="Customer" ToRole="Member" />
+    <NavigationProperty Name="PurchaseOrders" Relationship="Self.FK_PurchaseOrder_Customer" FromRole="Customer" ToRole="PurchaseOrder" />
+  </EntityType>
+  <EntityType Name="DetailsPhieuNhap">
+    <Key>
+      <PropertyRef Name="DetailsCodePN" />
+    </Key>
+    <Property Name="DetailsCodePN" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PNCode" Type="Int32" />
+    <Property Name="ProductCode" Type="Int32" />
+    <Property Name="Import_Unit_Price" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="Quantity_Of_Goods_Imported" Type="Int32" />
+    <NavigationProperty Name="PhieuNhap" Relationship="Self.FK_DetailsPhieuNhap_PhieuNhap" FromRole="DetailsPhieuNhap" ToRole="PhieuNhap" />
+    <NavigationProperty Name="Product" Relationship="Self.FK_DetailsPhieuNhap_Product" FromRole="DetailsPhieuNhap" ToRole="Product" />
+  </EntityType>
+  <EntityType Name="Manufacturer">
+    <Key>
+      <PropertyRef Name="ManufacturerCode" />
+    </Key>
+    <Property Name="ManufacturerCode" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NameManufacturer" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Information" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Logo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Products" Relationship="Self.FK_Product_Manufacturer" FromRole="Manufacturer" ToRole="Product" />
+  </EntityType>
+  <EntityType Name="Member">
+    <Key>
+      <PropertyRef Name="MemberCode" />
+    </Key>
+    <Property Name="MemberCode" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Account" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+    <Property Name="Question" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Answer" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="MemberTypeCode" Type="Int32" />
+    <NavigationProperty Name="Comments" Relationship="Self.FK_Comment_Member" FromRole="Member" ToRole="Comment" />
+    <NavigationProperty Name="Customers" Relationship="Self.FK_Customer_Member" FromRole="Member" ToRole="Customer" />
+    <NavigationProperty Name="MemberType" Relationship="Self.FK_Member_MemberType" FromRole="Member" ToRole="MemberType" />
+  </EntityType>
+  <EntityType Name="MemberType">
+    <Key>
+      <PropertyRef Name="MemberTypeCode" />
+    </Key>
+    <Property Name="MemberTypeCode" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NameType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Discount" Type="Int32" />
+    <NavigationProperty Name="Members" Relationship="Self.FK_Member_MemberType" FromRole="MemberType" ToRole="Member" />
+  </EntityType>
+  <EntityType Name="OrderDetail">
+    <Key>
+      <PropertyRef Name="OrderDetailsCode" />
+    </Key>
+    <Property Name="OrderDetailsCode" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="OrderCode" Type="Int32" />
+    <Property Name="ProductCode" Type="Int32" />
+    <Property Name="NameProduct" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="NumberOfOrders" Type="Int32" />
+    <Property Name="UnitPrice" Type="Decimal" Precision="18" Scale="0" />
+    <NavigationProperty Name="Product" Relationship="Self.FK_OrderDetails_Product" FromRole="OrderDetails" ToRole="Product" />
+    <NavigationProperty Name="PurchaseOrder" Relationship="Self.FK_OrderDetails_PurchaseOrder" FromRole="OrderDetails" ToRole="PurchaseOrder" />
+  </EntityType>
+  <EntityType Name="PhieuNhap">
+    <Key>
+      <PropertyRef Name="PNCode" />
+    </Key>
+    <Property Name="PNCode" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SupplierCode" Type="Int32" />
+    <Property Name="DayInput" Type="DateTime" Precision="3" />
+    <Property Name="Deleted" Type="Boolean" />
+    <NavigationProperty Name="DetailsPhieuNhaps" Relationship="Self.FK_DetailsPhieuNhap_PhieuNhap" FromRole="PhieuNhap" ToRole="DetailsPhieuNhap" />
+    <NavigationProperty Name="Supplier" Relationship="Self.FK_PhieuNhap_Supplier" FromRole="PhieuNhap" ToRole="Supplier" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="ProductCode" />
+    </Key>
+    <Property Name="ProductCode" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NameProduct" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Price" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="UpdateDay" Type="DateTime" Precision="3" />
+    <Property Name="Configuration" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="InventoryNumber" Type="Int32" />
+    <Property Name="View" Type="Int32" />
+    <Property Name="Votes" Type="Int32" />
+    <Property Name="Comment" Type="Int32" />
+    <Property Name="NumberOfPurchases" Type="Int32" />
+    <Property Name="NewProduct" Type="Int32" />
+    <Property Name="SupplierCode" Type="Int32" />
+    <Property Name="ManufacturerCode" Type="Int32" />
+    <Property Name="ProductTypeCode" Type="Int32" />
+    <Property Name="Deleted" Type="Boolean" />
+    <NavigationProperty Name="Comments" Relationship="Self.FK_Comment_Product" FromRole="Product" ToRole="Comment" />
+    <NavigationProperty Name="DetailsPhieuNhaps" Relationship="Self.FK_DetailsPhieuNhap_Product" FromRole="Product" ToRole="DetailsPhieuNhap" />
+    <NavigationProperty Name="Manufacturer" Relationship="Self.FK_Product_Manufacturer" FromRole="Product" ToRole="Manufacturer" />
+    <NavigationProperty Name="OrderDetails" Relationship="Self.FK_OrderDetails_Product" FromRole="Product" ToRole="OrderDetails" />
+    <NavigationProperty Name="ProductType" Relationship="Self.FK_Product_ProductType" FromRole="Product" ToRole="ProductType" />
+    <NavigationProperty Name="Supplier" Relationship="Self.FK_Product_Supplier" FromRole="Product" ToRole="Supplier" />
+  </EntityType>
+  <EntityType Name="ProductType">
+    <Key>
+      <PropertyRef Name="ProductTypeCode" />
+    </Key>
+    <Property Name="ProductTypeCode" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NameType" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Icon" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Alias" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Products" Relationship="Self.FK_Product_ProductType" FromRole="ProductType" ToRole="Product" />
+  </EntityType>
+  <EntityType Name="PurchaseOrder">
+    <Key>
+      <PropertyRef Name="OrderCode" />
+    </Key>
+    <Property Name="OrderCode" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="OrderDate" Type="DateTime" Precision="3" />
+    <Property Name="DeliveryStatus" Type="Boolean" />
+    <Property Name="DeliveryDate" Type="DateTime" Precision="3" />
+    <Property Name="Paid" Type="Boolean" />
+    <Property Name="CustomerCode" Type="Int32" />
+    <Property Name="Discount" Type="Int32" />
+    <NavigationProperty Name="Customer" Relationship="Self.FK_PurchaseOrder_Customer" FromRole="PurchaseOrder" ToRole="Customer" />
+    <NavigationProperty Name="OrderDetails" Relationship="Self.FK_OrderDetails_PurchaseOrder" FromRole="PurchaseOrder" ToRole="OrderDetails" />
+  </EntityType>
+  <EntityType Name="Supplier">
+    <Key>
+      <PropertyRef Name="SupplierCode" />
+    </Key>
+    <Property Name="SupplierCode" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NameSupplier" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+    <Property Name="Fax" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="PhieuNhaps" Relationship="Self.FK_PhieuNhap_Supplier" FromRole="Supplier" ToRole="PhieuNhap" />
+    <NavigationProperty Name="Products" Relationship="Self.FK_Product_Supplier" FromRole="Supplier" ToRole="Product" />
+  </EntityType>
+  <Association Name="FK_Comment_Member">
+    <End Role="Member" Type="Self.Member" Multiplicity="0..1" />
+    <End Role="Comment" Type="Self.Comment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Member">
+        <PropertyRef Name="MemberCode" />
+      </Principal>
+      <Dependent Role="Comment">
+        <PropertyRef Name="MemberCode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Comment_Product">
+    <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+    <End Role="Comment" Type="Self.Comment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="ProductCode" />
+      </Principal>
+      <Dependent Role="Comment">
+        <PropertyRef Name="ProductCode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Customer_Member">
+    <End Role="Member" Type="Self.Member" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Customer" Type="Self.Customer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Member">
+        <PropertyRef Name="MemberCode" />
+      </Principal>
+      <Dependent Role="Customer">
+        <PropertyRef Name="MemberCode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PurchaseOrder_Customer">
+    <End Role="Customer" Type="Self.Customer" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="PurchaseOrder" Type="Self.PurchaseOrder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="CustomerCode" />
+      </Principal>
+      <Dependent Role="PurchaseOrder">
+        <PropertyRef Name="CustomerCode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DetailsPhieuNhap_PhieuNhap">
+    <End Role="PhieuNhap" Type="Self.PhieuNhap" Multiplicity="0..1" />
+    <End Role="DetailsPhieuNhap" Type="Self.DetailsPhieuNhap" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PhieuNhap">
+        <PropertyRef Name="PNCode" />
+      </Principal>
+      <Dependent Role="DetailsPhieuNhap">
+        <PropertyRef Name="PNCode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DetailsPhieuNhap_Product">
+    <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+    <End Role="DetailsPhieuNhap" Type="Self.DetailsPhieuNhap" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="ProductCode" />
+      </Principal>
+      <Dependent Role="DetailsPhieuNhap">
+        <PropertyRef Name="ProductCode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Product_Manufacturer">
+    <End Role="Manufacturer" Type="Self.Manufacturer" Multiplicity="0..1" />
+    <End Role="Product" Type="Self.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Manufacturer">
+        <PropertyRef Name="ManufacturerCode" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="ManufacturerCode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Member_MemberType">
+    <End Role="MemberType" Type="Self.MemberType" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Member" Type="Self.Member" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MemberType">
+        <PropertyRef Name="MemberTypeCode" />
+      </Principal>
+      <Dependent Role="Member">
+        <PropertyRef Name="MemberTypeCode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrderDetails_Product">
+    <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+    <End Role="OrderDetails" Type="Self.OrderDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="ProductCode" />
+      </Principal>
+      <Dependent Role="OrderDetails">
+        <PropertyRef Name="ProductCode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrderDetails_PurchaseOrder">
+    <End Role="PurchaseOrder" Type="Self.PurchaseOrder" Multiplicity="0..1" />
+    <End Role="OrderDetails" Type="Self.OrderDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PurchaseOrder">
+        <PropertyRef Name="OrderCode" />
+      </Principal>
+      <Dependent Role="OrderDetails">
+        <PropertyRef Name="OrderCode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PhieuNhap_Supplier">
+    <End Role="Supplier" Type="Self.Supplier" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="PhieuNhap" Type="Self.PhieuNhap" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Supplier">
+        <PropertyRef Name="SupplierCode" />
+      </Principal>
+      <Dependent Role="PhieuNhap">
+        <PropertyRef Name="SupplierCode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Product_ProductType">
+    <End Role="ProductType" Type="Self.ProductType" Multiplicity="0..1" />
+    <End Role="Product" Type="Self.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProductType">
+        <PropertyRef Name="ProductTypeCode" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="ProductTypeCode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Product_Supplier">
+    <End Role="Supplier" Type="Self.Supplier" Multiplicity="0..1" />
+    <End Role="Product" Type="Self.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Supplier">
+        <PropertyRef Name="SupplierCode" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="SupplierCode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="SaleManagementEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Comments" EntityType="Self.Comment" />
+    <EntitySet Name="Customers" EntityType="Self.Customer" />
+    <EntitySet Name="DetailsPhieuNhaps" EntityType="Self.DetailsPhieuNhap" />
+    <EntitySet Name="Manufacturers" EntityType="Self.Manufacturer" />
+    <EntitySet Name="Members" EntityType="Self.Member" />
+    <EntitySet Name="MemberTypes" EntityType="Self.MemberType" />
+    <EntitySet Name="OrderDetails" EntityType="Self.OrderDetail" />
+    <EntitySet Name="PhieuNhaps" EntityType="Self.PhieuNhap" />
+    <EntitySet Name="Products" EntityType="Self.Product" />
+    <EntitySet Name="ProductTypes" EntityType="Self.ProductType" />
+    <EntitySet Name="PurchaseOrders" EntityType="Self.PurchaseOrder" />
+    <EntitySet Name="Suppliers" EntityType="Self.Supplier" />
+    <AssociationSet Name="FK_Comment_Member" Association="Self.FK_Comment_Member">
+      <End Role="Member" EntitySet="Members" />
+      <End Role="Comment" EntitySet="Comments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Comment_Product" Association="Self.FK_Comment_Product">
+      <End Role="Product" EntitySet="Products" />
+      <End Role="Comment" EntitySet="Comments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Customer_Member" Association="Self.FK_Customer_Member">
+      <End Role="Member" EntitySet="Members" />
+      <End Role="Customer" EntitySet="Customers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PurchaseOrder_Customer" Association="Self.FK_PurchaseOrder_Customer">
+      <End Role="Customer" EntitySet="Customers" />
+      <End Role="PurchaseOrder" EntitySet="PurchaseOrders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DetailsPhieuNhap_PhieuNhap" Association="Self.FK_DetailsPhieuNhap_PhieuNhap">
+      <End Role="PhieuNhap" EntitySet="PhieuNhaps" />
+      <End Role="DetailsPhieuNhap" EntitySet="DetailsPhieuNhaps" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DetailsPhieuNhap_Product" Association="Self.FK_DetailsPhieuNhap_Product">
+      <End Role="Product" EntitySet="Products" />
+      <End Role="DetailsPhieuNhap" EntitySet="DetailsPhieuNhaps" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Product_Manufacturer" Association="Self.FK_Product_Manufacturer">
+      <End Role="Manufacturer" EntitySet="Manufacturers" />
+      <End Role="Product" EntitySet="Products" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Member_MemberType" Association="Self.FK_Member_MemberType">
+      <End Role="MemberType" EntitySet="MemberTypes" />
+      <End Role="Member" EntitySet="Members" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrderDetails_Product" Association="Self.FK_OrderDetails_Product">
+      <End Role="Product" EntitySet="Products" />
+      <End Role="OrderDetails" EntitySet="OrderDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrderDetails_PurchaseOrder" Association="Self.FK_OrderDetails_PurchaseOrder">
+      <End Role="PurchaseOrder" EntitySet="PurchaseOrders" />
+      <End Role="OrderDetails" EntitySet="OrderDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PhieuNhap_Supplier" Association="Self.FK_PhieuNhap_Supplier">
+      <End Role="Supplier" EntitySet="Suppliers" />
+      <End Role="PhieuNhap" EntitySet="PhieuNhaps" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Product_ProductType" Association="Self.FK_Product_ProductType">
+      <End Role="ProductType" EntitySet="ProductTypes" />
+      <End Role="Product" EntitySet="Products" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Product_Supplier" Association="Self.FK_Product_Supplier">
+      <End Role="Supplier" EntitySet="Suppliers" />
+      <End Role="Product" EntitySet="Products" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

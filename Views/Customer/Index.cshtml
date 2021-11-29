@@ -1,0 +1,51 @@
+﻿@model IEnumerable<MyWebsite_SaleManagement_.Models.Customer>
+
+@{
+    Layout = null;
+}
+
+    <!DOCTYPE html>
+
+    <html>
+    <head>
+        <meta name="viewport" content="width=device-width" />
+        <title>Index</title>
+    </head>
+    <body>
+   
+        <div>
+            <table border="1">
+                <tr>
+                    <td>CustomerCode</td>
+                    <td>NameCustomer</td>
+                    <td>Address</td>
+                    <td>Email</td>
+                    <td>PhoneNumber</td>
+                </tr>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @item.CustomerCode
+                        </td>
+                        <td>
+                            @item.NameCustomer
+                        </td>
+                        <td>
+                            @item.Address
+                        </td>
+                        <td>
+                            @item.Email
+                        </td>
+                        <td>
+                            @item.PhoneNumber
+                        </td>
+                    </tr>
+
+                }
+
+
+            </table>
+        </div>
+    </body>
+</html>

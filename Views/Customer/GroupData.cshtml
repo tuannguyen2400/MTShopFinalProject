@@ -1,0 +1,21 @@
+﻿@using MyWebsite_SaleManagement_.Models;
+@model List<Member>
+@{
+    ViewBag.Title = "GroupData";
+}
+
+@*GroupData*@
+
+@foreach (var GroupMemberType in Model.GroupBy(n => n.MemberType))
+{
+    <div>
+        @GroupMemberType.Key.NameType
+    </div>
+    foreach (var item in GroupMemberType)
+    { 
+        <p>
+            @item.Account
+        </p>
+
+    }
+}

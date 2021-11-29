@@ -1,0 +1,40 @@
+﻿<Properties StartupConfiguration="{843F0FAF-5149-43CA-9E86-DC900FA9D8CD}|">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Controllers/SearchController.cs">
+    <Files>
+      <File FileName="Controllers/ShoppingCartController.cs" Line="125" Column="6" />
+      <File FileName="Controllers/LoginController.cs" Line="1" Column="1" />
+      <File FileName="Controllers/HomeController.cs" Line="19" Column="1" />
+      <File FileName="Controllers/ItemShoppingCart.cs" Line="1" Column="1" />
+      <File FileName="Controllers/MenController.cs" Line="1" Column="1" />
+      <File FileName="Controllers/ProductsController.cs" Line="24" Column="10" />
+      <File FileName="Controllers/CheckOutController.cs" Line="1" Column="1" />
+      <File FileName="Controllers/AdminController.cs" Line="1" Column="1" />
+      <File FileName="Controllers/DemoAjaxController.cs" Line="1" Column="1" />
+      <File FileName="Controllers/SearchController.cs" Line="19" Column="10" />
+      <File FileName="Controllers/WomenController.cs" Line="1" Column="1" />
+      <File FileName="Controllers/DemoController.cs" Line="1" Column="1" />
+      <File FileName="Controllers/CustomerController.cs" Line="1" Column="1" />
+      <File FileName="Controllers/ContactController.cs" Line="1" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="MyWebsite(SaleManagement)" expanded="True">
+            <Node name="MyWebsite(SaleManagement)" expanded="True">
+              <Node name="Controllers" expanded="True">
+                <Node name="ProductsController.cs" selected="True" />
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.ItemProperties.MyWebsite_228SaleManagement_229 PreferredExecutionTarget="/Applications/Safari.app" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>

@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "843f0faf-5149-43ca-9e86-dc900fa9d8cd": {
+      "ProjectGuid": "843f0faf-5149-43ca-9e86-dc900fa9d8cd",
+      "DisplayName": "MyWebsite(SaleManagement)",
+      "ColorIndex": 0
+    }
+  },
+  "NextColorIndex": 1
+}

@@ -1,0 +1,48 @@
+﻿
+@{
+    ViewBag.Title = "DemoAjax";
+    Layout = "~/Views/Layout/HomeLayout.cshtml";
+}
+@*OPTION1 LOAD AJAX WIGTH ACTION LINK*@
+@*<script src="@Url.Content("~/Scripts/jquery.unobtrusive-ajax.js")" type="text/javascript"></script>
+
+@Ajax.ActionLink("Demo Ajax","LoadAjaxActionLink", new AjaxOptions { HttpMethod = "GET", UpdateTargetId = "Result", InsertionMode = InsertionMode.Replace,LoadingElementId="divLoading" })
+<div id="Result" style="height:150px;">
+    This is results
+    <br />
+
+</div>*@
+
+@*Load ajax theo cách thứ 2 dùng ajax BeginForm*@
+@*@using (Ajax.BeginForm("LoadAjaxBeginForm", new AjaxOptions { HttpMethod = "Post", UpdateTargetId = "Result", InsertionMode = InsertionMode.Replace, LoadingElementId = "divLoading" }))
+{
+
+    <input name="txt1" />
+    <input type="submit" value="Submit" />
+}*@
+<input type="button" id="button" value="Submit Jquery Ajax" />
+<div id="divLoading" style="display:none;">
+    <img src="~/Content/images/ba3.jpg" />
+
+
+</div>
+<div id="Result" style="height:150px;">
+    This is results
+    <br />
+</div>
+<script>
+    $("#button").click(function () {
+        $('#divLoading').show();
+        $.ajax({
+            type: 'GET',
+            data: { a: 1, b: 2 },
+            url: 'LoadAjaxJquery',
+            success: function (Result) {
+                $('#loading').hide();
+                $('Result').html(Result);
+
+            }
+        })
+    })
+</script>
+ 
